@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../common/bootstrap4.5.3/css/bootstrap.css" />
+    <script src="../common/jquery/jquery-3.5.1.js"></script>
+    <style>
+        div{
+            width: 200px; height: 50px; margin: 20px;
+        }
+    </style>
+</head>
+<body>
+	<h2>on() / off() 메소드</h2>
+	
+	<div id="div1" style="background-color:red;">
+		미리 생성한 div(요기를 눌러보삼)
+	</div>
+	
+	<button id="onMethod">on()메소드호출</button>
+	<button id="offMethod">off()메소드호출</button>
+	
+	<div class="div2">
+		<button>아이템추가하기</button>
+		<ul>
+			<li>기존아이템1</li>
+			<li>기존아이템2</li>
+		</ul>
+	</div>
+</body>
+<script>
+    //사용법은 bind와 동일 엘리먼트 이벤트를 부여할때 사용
+    $(document).ready(function(){
+        $("#onMethod").on("click",function(){
+            alert("#onMethod버튼이 클릭되었습니다.");
+        });
+
+    $("#offMethod").on("click",function(){
+        $("#onMethod").off("click");
+        alert("#onMethod 이벤트가 해제되었습니다.");
+    });
+    //after():선택된 요소 다음에 인자로 전달되는 컨텐츠를 추가한다.
+    $('#div1').on('click',function(){
+        alert('클릭이벤트 발생됨');
+        //this는 현재 선택된 #div요소를 가리킨다.
+        $(this).after("<div style='background-color:green;'>동적으로 생성한 div </div>");
+    });
+    /*
+    append :after와 동일하게 선택된 요소 다음 부분에 컨텍츠를 추가한다
+    css(): js의 style 속성괃동일하게 css효과를 부여한다
+    동적으로 생성한 (즉, 코드상으로 존재하지 않는 엘리먼트)요소에는
+    click이벤트를 bind()할 수 없다 하지만 on을 통해서는 이벤트를
+    부여할 수 있다.
+    */
+    $('.div2 button').on("click",function(){
+        $(".div2 ul").append("<li>추가된 li 태그</li>");
+    });
+    $(".div2").on("click","li",function(){
+        //메서드 체인형태로 텍스트의 색깔과 크기 변경
+            $(this).css("color","red").css("fontSize","1.8em");
+    
+    });
+
+    });
+</script>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../common/bootstrap4.5.3/css/bootstrap.css" />
+    <script src="../common/jquery/jquery-3.5.1.js"></script>
+</head>
+
+<body>
+	
+	<h2>empty() / remove() 메소드</h2>
+	
+	<button id="empty">Empty()호출하기</button>
+	<button id="remove">Remove()호출하기</button>	
+	
+	<div>div태그안의 텍스트</div>
+</body>
+<script>
+$(function(){
+    $('button').click(function(){
+        if(this.id == "empty"){
+            //empty 선택된 요소의 컨텐츠를 삭재 단순히 내용만 제거
+            //text('') 혹은 html('')과 동일함
+            $('div').empty();
+            //엘리먼트는 남아있으므로 아래내용이 출력된다.
+            $('div').html('내용이 empty 되었습니다.');
+        }
+        else{
+            //remove 선택된 요소 Dom객체 자체가 삭제됨 아래내용 출력X
+            $('div').remove();
+            $('div').html('내용이 remove되었습니다');
+        }
+    });
+});
+
+
+</script>
+<style>
+    div{
+        border:2px green dotted;
+        height: 50px;
+    }
+
+</style>
+</html>

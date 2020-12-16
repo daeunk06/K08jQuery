@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../common/bootstrap4.5.3/css/bootstrap.css" />
+    <script src="../common/jquery/jquery-3.5.1.js"></script>
+</head>
+<body>
+	<h2>next() / prev() 메소드</h2>
+	
+	<button id="next">jQuery의 다음요소 얻어오기</button>
+	<button id="prev">jQuery의 이전요소 얻어오기</button>
+	<button id="continue">연속해서 배경색 바꾸기</button>
+	
+	<ul>
+		<li>JAVA</li> 0번인덱스
+		<li>HTML5</li>
+		<li class="third">JSP->여기가third</li>
+		<li>jQuery</li>
+		<li>Spring</li> 4번인덱스
+	</ul>
+</body>
+<script>
+$(function(){
+    $('button#next').click(function(){
+        $('li.third').prev().css("backgroundColor","blue");
+        $('li.third').next().css("fontSize","1.2em");
+    });
+    var i=0;
+    var size = $("li").length;
+
+    $('button#continue').click(function(){
+        $('li').eq(i).prev().css("backgroundColor","white");
+        $('li').eq(i).css("backgroundColor","yellow");
+
+        if(i==0){
+            $('li').eq(size-1).css("backgroundColor","white");
+        }
+        if(size-1==i){
+            i=0;
+        }
+        else{
+            i++;
+        }
+    });
+});
+
+
+</script>
+</html>
